@@ -16,7 +16,7 @@ resources:
 variables:
   system.debug: 'true'
   # PUBLISH_PIPELINE_METADATA: 'true'
-  dockerRegistryServiceConnection: '310e6edb-7ad3-4a6a-8b82-137112b9eded'
+  dockerRegistryServiceConnection: 'raireg2'
   imageRepository: 'zenithworksahsimplegorepo'
   containerRegistry: 'raireg2.azurecr.io'
   dockerfilePath: '**/Dockerfile'
