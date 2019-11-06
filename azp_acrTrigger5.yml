@@ -9,7 +9,7 @@ resources:
     azureSubscription: 'RMPM'
     resourceGroup: raiyan-rg2
     registry: raireg1
-    repository: zenithworkssimplegoapp
+    repository: ahsimplegorepo
     trigger: true
 
 
@@ -18,11 +18,11 @@ variables:
   # PUBLISH_PIPELINE_METADATA: 'true'
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '53d6f92a-d6ec-476d-b682-8ce664e9185f'
-  imageRepository: 'zenithworkssimplegoapp'
+  imageRepository: 'ahsimplegorepo'
   containerRegistry: 'raireg1.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(resources.container.myACRContainer2.tag)'
-  imagePullSecret: 'raireg12245c8ae-auth'
+  imagePullSecret: 'raireg15cfe-auth'
   
   
  
@@ -58,7 +58,7 @@ stages:
     displayName: Deploy    
     pool:
       vmImage: $(vmImageName)
-    environment: 'zenithworksSimpleGoApp-1533.ignitedemo2'
+    environment: 'zenithworksahsimpleGoRepo-1656.dev-ns'
     strategy:
       canary:
         increments: [25, 50]
@@ -81,7 +81,7 @@ stages:
             inputs:
               action: $(strategy.action)
            #   kubernetesServiceConnection: ''
-              namespace: 'ignitedemo2'
+              namespace: 'dev-ns'
               strategy: $(strategy.name)
               percentage: $(strategy.increment)
               manifests: |
@@ -105,7 +105,7 @@ stages:
               inputs:
                 action: 'reject'
                # kubernetesServiceConnection: ''
-                namespace: 'ignitedemo2'
+                namespace: 'dev-ns'
                 strategy: $(strategy.name)
                 manifests: |
                   $(Pipeline.workspace)/manifests/deployment.yml
