@@ -6,7 +6,6 @@
 #- master
 
 trigger: none
-pr: none
 
 resources:
 - repo: self
