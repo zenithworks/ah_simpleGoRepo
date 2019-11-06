@@ -31,11 +31,11 @@ variables:
 
 
 stages:
-- stage: Build
+- stage: PreProd
   displayName: Pre Prod config
   jobs:  
   - job: PreProdConfig
-    displayName: Build   
+    displayName: Config update   
     steps:
     - upload: manifests
       artifact: manifests
@@ -43,6 +43,7 @@ stages:
       inputs:
         targetType: inline
         script: |          
+          echo  'config updates in progress...'
           #Write-Host $(resources.container.myACRContainer2.type)
           #Write-Host $(resources.container.myACRContainer2.registry)
           #Write-Host $(resources.container.myACRContainer2.repository)
