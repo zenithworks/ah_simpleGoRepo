@@ -52,7 +52,7 @@ stages:
           #Write-Host $(resources.container.myACRContainer2.location)
 - stage: Deploy
   displayName: Deploy stage
-  dependsOn: Build
+  dependsOn: PreProd
   jobs:
   - deployment: Deploy
     displayName: Deploy    
