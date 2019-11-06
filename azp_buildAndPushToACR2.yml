@@ -8,7 +8,7 @@ resources:
 variables:
   dockerRegistryServiceConnection: '310e6edb-7ad3-4a6a-8b82-137112b9eded'
   imageRepository: 'zenithworksahsimplegorepo'
-  containerRegistry: 'raireg2.azurecr.io'
+  containerRegistry: 'raireg3.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'raireg212056e58-auth'
