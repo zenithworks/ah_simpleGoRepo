@@ -35,8 +35,7 @@ stages:
   displayName: Pre Prod config
   jobs:  
   - job: PreProdConfig
-    displayName: Build
-    pool: 'demopool'
+    displayName: Build   
     steps:
     - upload: manifests
       artifact: manifests
