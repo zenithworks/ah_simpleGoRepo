@@ -7,9 +7,9 @@ resources:
   - container: myACRContainer2  
     type: ACR
     azureSubscription: 'RMPM'
-    resourceGroup: raiyan-rg2
-    registry: raireg3
-    repository: zenithworks/ah_simplegorepo
+    resourceGroup: moala-rg1
+    registry: raireg2
+    repository: zenithworksahsimplegorepo
     trigger: true
 
 
