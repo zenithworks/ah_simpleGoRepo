@@ -8,13 +8,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'raireg1'
-  imageRepository: 'zenithworkssimplegoapp'
+  dockerRegistryServiceConnection: '3e83a24b-581f-4a2a-8dce-2e885f216a4e'
+  imageRepository: 'ahsimplegorepo'
   containerRegistry: 'raireg1.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'raireg12245c8ae-auth'
-
+  imagePullSecret: 'raireg15cfe-auth'
 
 
 stages:
