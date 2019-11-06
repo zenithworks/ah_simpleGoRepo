@@ -50,8 +50,8 @@ stages:
           #Write-Host $(resources.container.myACRContainer2.tag)
           #Write-Host $(resources.container.myACRContainer2.digest)
           #Write-Host $(resources.container.myACRContainer2.location)
-- stage: Deploy
-  displayName: Deploy stage
+- stage: Prod
+  displayName: Production
   dependsOn: PreProd
   jobs:
   - deployment: Deploy
