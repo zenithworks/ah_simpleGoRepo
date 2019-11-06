@@ -6,13 +6,12 @@ resources:
 - repo: self
 
 variables:
-  # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '95b06a83-a439-4a13-9e30-a9c5e22c6300'
+  dockerRegistryServiceConnection: '310e6edb-7ad3-4a6a-8b82-137112b9eded'
   imageRepository: 'zenithworksahsimplegorepo'
   containerRegistry: 'raireg2.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'raireg223fd-auth'
+  imagePullSecret: 'raireg212056e58-auth'
 
 
 stages:
