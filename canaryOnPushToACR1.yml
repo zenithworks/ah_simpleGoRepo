@@ -62,8 +62,9 @@ stages:
     strategy:
       canary:
         increments: [25, 50]
-        preDeploy:
-          steps:          
+        preDeploy:          
+          steps:
+          - checkout: self          
           - script:
               echo $(strategy.name)
         deploy:
