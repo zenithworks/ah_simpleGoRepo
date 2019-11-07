@@ -58,7 +58,7 @@ stages:
     displayName: Deploy    
     pool:
       vmImage: $(vmImageName)
-    environment: 'zenithworksahsimpleGoRepo-1656.dev-ns'
+    environment: 'zenithworksahsimpleGoRepo-Canary.dev-ns'
     strategy:
       canary:
         increments: [25, 50]
