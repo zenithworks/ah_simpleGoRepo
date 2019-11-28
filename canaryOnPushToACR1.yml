@@ -79,26 +79,26 @@ stages:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-          - task: KubernetesManifest@0
-            inputs:
-              action: $(strategy.action)
-           #   kubernetesServiceConnection: ''
-              namespace: 'dev-ns'
-              strategy: $(strategy.name)
-              percentage: $(strategy.increment)
-              manifests: |
-                  $(Pipeline.workspace)/manifests/deployment.yml
-                  $(Pipeline.workspace)/manifests/service.yml
-              imagePullSecrets: $(imagePullSecret)
-              containers: |
-                $(containerRegistry)/$(imageRepository):$(tag)
+          # - task: KubernetesManifest@0
+          #   inputs:
+          #     action: $(strategy.action)
+          #  #   kubernetesServiceConnection: ''
+          #     namespace: 'dev-ns'
+          #     strategy: $(strategy.name)
+          #     percentage: $(strategy.increment)
+          #     manifests: |
+          #         $(Pipeline.workspace)/manifests/deployment.yml
+          #         $(Pipeline.workspace)/manifests/service.yml
+          #     imagePullSecrets: $(imagePullSecret)
+          #     containers: |
+          #       $(containerRegistry)/$(imageRepository):$(tag)
               
         postRouteTraffic:
           pool: server
           steps:
             - task: Delay@1
               inputs:
-                delayForMinutes: '2'
+                delayForMinutes: '1'
         on:
           failure:
             steps:            
