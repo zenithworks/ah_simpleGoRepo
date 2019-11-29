@@ -22,7 +22,7 @@ variables:
   containerRegistry: 'raireg1.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(resources.container.myACRContainer2.tag)'
-  imagePullSecret: 'raireg15cfe-auth'
+  imagePullSecret: 'my-auth'
   
   
  
@@ -58,7 +58,7 @@ stages:
     displayName: Deploy    
     pool:
       vmImage: $(vmImageName)
-    environment: 'zenithworksahsimpleGoRepo-Canary.dev-ns'
+    environment: 'zenithworksahsimpleGoRepo-Canary.trace2'
     strategy:
       canary:
         increments: [25, 50]
@@ -83,7 +83,7 @@ stages:
           #   inputs:
           #     action: $(strategy.action)
           #  #   kubernetesServiceConnection: ''
-          #     namespace: 'dev-ns'
+          #     namespace: 'trace2'
           #     strategy: $(strategy.name)
           #     percentage: $(strategy.increment)
           #     manifests: |
@@ -103,15 +103,15 @@ stages:
           failure:
             steps:            
             - script: echo deployment failed...
-            - task: KubernetesManifest@0
-              inputs:
-                action: 'reject'
-               # kubernetesServiceConnection: ''
-                namespace: 'dev-ns'
-                strategy: $(strategy.name)
-                manifests: |
-                  $(Pipeline.workspace)/manifests/deployment.yml
-                  $(Pipeline.workspace)/manifests/service.yml
+            #- task: KubernetesManifest@0
+            #  inputs:
+            #    action: 'reject'
+            #   # kubernetesServiceConnection: ''
+            #    namespace: 'trace2'
+            #    strategy: $(strategy.name)
+            #    manifests: |
+            #      $(Pipeline.workspace)/manifests/deployment.yml
+            #      $(Pipeline.workspace)/manifests/service.yml
           success:
             steps:
             - script: echo deployment succeeded...      
