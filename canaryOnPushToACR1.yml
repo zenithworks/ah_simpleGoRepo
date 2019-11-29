@@ -79,19 +79,19 @@ stages:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-          # - task: KubernetesManifest@0
-          #   inputs:
-          #     action: $(strategy.action)
-          #  #   kubernetesServiceConnection: ''
-          #     namespace: 'trace2'
-          #     strategy: $(strategy.name)
-          #     percentage: $(strategy.increment)
-          #     manifests: |
-          #         $(Pipeline.workspace)/manifests/deployment.yml
-          #         $(Pipeline.workspace)/manifests/service.yml
-          #     imagePullSecrets: $(imagePullSecret)
-          #     containers: |
-          #       $(containerRegistry)/$(imageRepository):$(tag)
+          - task: KubernetesManifest@0
+            inputs:
+              action: $(strategy.action)
+           #   kubernetesServiceConnection: ''
+              namespace: 'trace2'
+              strategy: $(strategy.name)
+              percentage: $(strategy.increment)
+              manifests: |
+                  $(Pipeline.workspace)/manifests/deployment.yml
+                  $(Pipeline.workspace)/manifests/service.yml
+              imagePullSecrets: $(imagePullSecret)
+              containers: |
+                $(containerRegistry)/$(imageRepository):$(tag)
               
         postRouteTraffic:
           pool: server
@@ -103,15 +103,15 @@ stages:
           failure:
             steps:            
             - script: echo deployment failed...
-            #- task: KubernetesManifest@0
-            #  inputs:
-            #    action: 'reject'
-            #   # kubernetesServiceConnection: ''
-            #    namespace: 'trace2'
-            #    strategy: $(strategy.name)
-            #    manifests: |
-            #      $(Pipeline.workspace)/manifests/deployment.yml
-            #      $(Pipeline.workspace)/manifests/service.yml
+            - task: KubernetesManifest@0
+              inputs:
+                action: 'reject'
+               # kubernetesServiceConnection: ''
+                namespace: 'trace2'
+                strategy: $(strategy.name)
+                manifests: |
+                  $(Pipeline.workspace)/manifests/deployment.yml
+                  $(Pipeline.workspace)/manifests/service.yml
           success:
             steps:
             - script: echo deployment succeeded...      
