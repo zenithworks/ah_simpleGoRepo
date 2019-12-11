@@ -98,7 +98,7 @@ stages:
           steps:
             - task: Delay@1
               inputs:
-                delayForMinutes: '0'
+                delayForMinutes: '2'
         on:
           failure:
             steps:            
