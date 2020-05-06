@@ -11,12 +11,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '2db516f3-2f19-489d-8a07-0fa1fb6b0f62'
-  imageRepository: 'zenithworksahsimplegorepo'
+  dockerRegistryServiceConnection: '51fbac27-ac5f-481e-b82a-9e2c30b784ec'
+  imageRepository: 'ashokirlaahsimplegorepo'
   containerRegistry: 'ashkiracr.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'ashkiracrdb92-auth'
+  imagePullSecret: 'ashkiracr247198ae-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -56,7 +56,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'zenithworksahsimpleGoRepo.goapp'
+    environment: 'ashokirlaahsimpleGoRepo.testreviewapps'
     strategy:
       runOnce:
         deploy:
@@ -86,12 +86,12 @@ stages:
     pool:
       vmImage: $(vmImageName)
       
-    environment: 'zenithworksahsimpleGoRepo.$(k8sNamespaceForPR)'
+    environment: 'ashokirlaahsimpleGoRepo.$(k8sNamespaceForPR)'
     strategy:
       runOnce:
         deploy:
           steps:
-          - reviewApp: goapp
+          - reviewApp: testreviewapps
 
           - task: Kubernetes@1
             displayName: 'Create a new namespace for the pull request'

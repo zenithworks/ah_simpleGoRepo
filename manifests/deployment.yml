@@ -1,16 +1,16 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: ahsimplegorepo 
+  name: ashokirlaahsimplegorepo 
 spec:
-  replicas: 4
+  replicas: 1
   template:
     metadata:
       labels:
-        app: ahsimplegorepo 
+        app: ashokirlaahsimplegorepo 
     spec:
       containers:
-        - name: ahsimplegorepo 
-          image: raireg1.azurecr.io/ahsimplegorepo
+        - name: ashokirlaahsimplegorepo 
+          image: ashkiracr.azurecr.io/ashokirlaahsimplegorepo
           ports:
           - containerPort: 80
